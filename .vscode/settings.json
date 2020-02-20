@@ -1,0 +1,26 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "iostream": "cpp",
+        "ostream": "cpp",
+        "cwchar": "cpp",
+        "vector": "cpp",
+        "map": "cpp",
+        "unordered_map": "cpp",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "deque": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "new": "cpp",
+        "random": "cpp",
+        "cstdlib": "cpp",
+        "cmath": "cpp",
+        "hash_set": "cpp",
+        "queue": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "stack": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}
