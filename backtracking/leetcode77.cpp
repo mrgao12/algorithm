@@ -14,16 +14,16 @@ class Solution {
             vector< int > path;
             vector< vector< int > > res;
 
-            backtrack ( 1, n, k, path, res );
+            backtrack ( 0, 1, n, k, path, res );
             return res;
         }
 
-        void backtrack ( int depth, int n, int k, vector< int >& path, vector< vector< int > >& res ) {
-            if ( depth > k ) res.push_back ( path );
+        void backtrack ( int depth, int start, int n, int k, vector< int >& path, vector< vector< int > >& res ) {
+            if ( depth == k ) res.push_back ( path );
             else {
-                for ( int i = depth; i <= n; i++ ) {
+                for ( int i = start; i <= n; i++ ) {
                     path.push_back ( i );
-                    backtrack ( depth+1, n, k, path, res );
+                    backtrack ( depth+1, i+1, n, k, path, res );
                     path.pop_back();
                 }
             }
