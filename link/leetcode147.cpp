@@ -37,3 +37,43 @@ class Solution {
             return dummyHead->next;
         }
 };
+
+
+
+
+
+class Solution {
+    public:
+        ListNode* search ( ListNode* head, int n, int e ) {
+            ListNode* p = head; ListNode* q;
+
+            while ( 0 <= n-- ) {
+                q = p;
+                if ( e <= ( p = p->next )->val ) break;
+            }
+
+            return q;
+        }
+
+        ListNode* insertionSortList ( ListNode* head ) {
+            if ( ! head || head->next == NULL ) return head;
+            ListNode* dummyHead = new ListNode ( 0 );
+            dummyHead->next = head;
+            
+            ListNode* p = dummyHead; ListNode* q;
+            int r = 0;
+
+            while ( ( q = p->next ) != NULL ) {
+                ListNode* pre = search ( dummyHead, r, q->val );
+                if ( pre->next == q ) p = q;
+                else {
+                    p->next = q->next;
+                    q->next = pre->next;
+                    pre->next = q;
+                }
+                r++;
+            }
+
+            return dummyHead->next;
+        }
+};
