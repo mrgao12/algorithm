@@ -251,3 +251,39 @@ void mergeSort ( ListNode*& head ) {
 ```
 
 ### 9、链表的插入排序
+插入排序将整个序列分为两个部分，前端为有序，后端为无序，不断的将无序中的第一个元素加入有序
+![pic2](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+```cpp
+ListNode* search ( ListNode* head, int n, int e ) {
+    ListNode* p = head; ListNode* q;
+
+    while ( 0 <= n-- ) {
+        q = p;
+        if ( e <= ( p = p->next )->val ) break;
+    }
+
+    return q;
+}
+
+ListNode* insertionSortList ( ListNode* head ) {
+    if ( ! head || head->next == NULL ) return head;
+    ListNode* dummyHead = new ListNode ( 0 );
+    dummyHead->next = head;
+    
+    ListNode* p = dummyHead; ListNode* q;
+    int r = 0;
+
+    while ( ( q = p->next ) != NULL ) {
+        ListNode* pre = search ( dummyHead, r, q->val );
+        if ( pre->next == q ) p = q;
+        else {
+            p->next = q->next;
+            q->next = pre->next;
+            pre->next = q;
+        }
+        r++;
+    }
+
+    return dummyHead->next;
+}
+```

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<hr>
+<p>[TOC]</p>
+<h2 id="%E4%B8%80%E7%BA%BF%E6%80%A7%E8%A1%A8">一、线性表</h2>
+<h2 id="%E4%BA%8C%E9%93%BE%E8%A1%A8">二、链表</h2>
+<p>单向链表结构定义如下：</p>
+<pre class="hljs"><code><div><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> {</span>
+    <span class="hljs-keyword">int</span> val;
+    ListNode *next;
+    ListNode(<span class="hljs-keyword">int</span> x) : val(x), next(<span class="hljs-literal">NULL</span>) {}
+};
+</div></code></pre>
+<h4 id="1%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8">1、翻转链表</h4>
+<ul>
+<li>递归解法
+设置递归函数的返回值为翻转后链表的首节点
+递归终止条件为空节点或节点长度为1
+实现代码如下：</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">reverse</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || head-&gt;next == <span class="hljs-literal">NULL</span> ) <span class="hljs-keyword">return</span> head;
+
+    ListNode* newHead = reverse ( head-&gt;next );
+    head-&gt;next-&gt;next = head;
+    head-&gt;next = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-keyword">return</span> newHead;
+}
+</div></code></pre>
+<ul>
+<li>非递归解法
+尾插法，将原本的节点通过尾插法不断的加入新节点
+实现代码如下：</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">reverse</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || head-&gt;next == <span class="hljs-literal">NULL</span> )
+    ListNode* pre = <span class="hljs-literal">NULL</span>;
+
+    <span class="hljs-keyword">while</span> ( head ) {
+        ListNode* next = head-&gt;next;
+        head-&gt;next = pre;
+        pre = head;
+        head = next;
+    }
+    <span class="hljs-keyword">return</span> pre;
+}
+</div></code></pre>
+<h3 id="2%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8%E7%9A%84%E5%89%8Dn%E4%B8%AA%E5%85%83%E7%B4%A0">2、翻转链表的前n个元素</h3>
+<p>同翻转整个链表相同，只是要记录第n+1个元素，然后将head-&gt;next接入第n+1个元素</p>
+<ul>
+<li>递归解法</li>
+</ul>
+<pre class="hljs"><code><div>ListNode* successor = <span class="hljs-literal">NULL</span>;
+<span class="hljs-function">ListNode* <span class="hljs-title">reverseNList</span> <span class="hljs-params">( ListNode* head, <span class="hljs-keyword">int</span> n )</span> </span>{
+    <span class="hljs-keyword">if</span> ( n == <span class="hljs-number">1</span> ) {
+        successor = head-&gt;next;
+        <span class="hljs-keyword">return</span> head;
+    }
+
+    ListNode* newHead = reverseNList ( head-&gt;next, n<span class="hljs-number">-1</span> );
+    head-&gt;next-&gt;next = head;
+    head-&gt;next = successor;
+
+    <span class="hljs-keyword">return</span> newHead;
+}
+</div></code></pre>
+<h3 id="2%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8%E7%9A%84%E6%9F%90%E4%B8%80%E6%AE%B5%E5%85%83%E7%B4%A0%E4%BB%8Em%E5%BC%80%E5%A7%8B%E5%88%B0n">2、翻转链表的某一段元素（从m开始到n）</h3>
+<p>减治问题，如果m=1则问题等价于翻转链表的前n个元素</p>
+<ul>
+<li>递归解法</li>
+</ul>
+<pre class="hljs"><code><div>ListNode* successor = <span class="hljs-literal">NULL</span>;
+<span class="hljs-function">ListNode* <span class="hljs-title">reverseNList</span> <span class="hljs-params">( ListNode* head, <span class="hljs-keyword">int</span> n )</span> </span>{
+    <span class="hljs-keyword">if</span> ( n == <span class="hljs-number">1</span> ) {
+        successor = head-&gt;next;
+        <span class="hljs-keyword">return</span> head;
+    }
+
+    ListNode* newHead = reverseNList ( head-&gt;next, n<span class="hljs-number">-1</span> );
+    head-&gt;next-&gt;next = head;
+    head-&gt;next = successor;
+
+    <span class="hljs-keyword">return</span> newHead;
+}
+
+<span class="hljs-function">ListNode* <span class="hljs-title">reverseBetween</span> <span class="hljs-params">( ListNode* head, <span class="hljs-keyword">int</span> m, <span class="hljs-keyword">int</span> n )</span> </span>{
+    <span class="hljs-keyword">if</span> ( m == <span class="hljs-number">1</span> ) <span class="hljs-keyword">return</span> reverseNList ( head, n );
+    head-&gt;next = reverseBetween ( head-&gt;next, m<span class="hljs-number">-1</span>, n<span class="hljs-number">-1</span> );
+    <span class="hljs-keyword">return</span> head;
+}
+</div></code></pre>
+<h3 id="3%E6%9F%A5%E6%89%BE%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%82%B9">3、查找链表中点</h3>
+<p>快慢指针法，慢指针一次移动一步，快指针一次移动两步</p>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">midst</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    ListNode* slow = head;
+    ListNode* fast = head;
+
+    <span class="hljs-keyword">while</span> ( fast &amp;&amp; fast-&gt;next ) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+    }
+    <span class="hljs-keyword">return</span> slow;
+}
+</div></code></pre>
+<h3 id="4%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8">4、合并两个有序链表</h3>
+<p>设置一个头指针，随后以此将两个链表中元素较小者加于到该指针的尾部并移动相应的指针。</p>
+<ul>
+<li>递归解法</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">mergeSortedList</span> <span class="hljs-params">( ListNode* l1, ListNode* l2 )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! l1 ) <span class="hljs-keyword">return</span> l2;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( ! l2 ) <span class="hljs-keyword">return</span> l1;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( l1-&gt;val &lt;= l2-&gt;val ) {
+        l1-&gt;next = mergeSortedList ( l1-&gt;next, l2 );
+        <span class="hljs-keyword">return</span> l1;
+    } <span class="hljs-keyword">else</span> {
+        l2-&gt;next = mergeSortedList ( l1, l2-&gt;next );
+        <span class="hljs-keyword">return</span> l2;
+    }
+}
+</div></code></pre>
+<ul>
+<li>非递归解法</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">mergeSortedList</span> <span class="hljs-params">( ListNode* l1, ListNode* l2 )</span> </span>{
+    ListNode* dummyHead = <span class="hljs-keyword">new</span> ListNode(<span class="hljs-number">0</span>);
+    ListNode* head = dummyHead;
+
+    <span class="hljs-keyword">while</span> ( l1 &amp;&amp; l2 ) {
+        <span class="hljs-keyword">if</span> ( l1-&gt;val &lt;= l2-&gt;val ) { head-&gt;next = l1; l1 = l1-&gt;next; head = head-&gt;next; }
+        <span class="hljs-keyword">else</span> { head-&gt;next = l2; l2 = l2-&gt;next; head = head-&gt;next; }
+    }
+    head-&gt;next = ( l1 ? l1 : l2 );
+
+    <span class="hljs-keyword">return</span> dummyHead-&gt;next;
+}
+</div></code></pre>
+<h3 id="5%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8%E5%8E%BB%E9%87%8D">5、有序链表去重</h3>
+<p>有序链表的重复元素必然紧邻，考察链表中相邻的元素，若相同则删除其中一个</p>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">deleteDuplicates</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || ! head-&gt;next ) <span class="hljs-keyword">return</span> head;
+    ListNode* p = head; ListNode* q;
+
+    <span class="hljs-keyword">while</span> ( q = p-&gt;next ) {
+        <span class="hljs-keyword">if</span> ( p-&gt;val == q-&gt;val ) { p-&gt;next = q-&gt;next; <span class="hljs-keyword">delete</span> q; }
+        <span class="hljs-keyword">else</span> p = p-&gt;next;
+    }
+}
+</div></code></pre>
+<h3 id="6%E5%AF%BB%E6%89%BE%E9%93%BE%E8%A1%A8%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF">6、寻找链表中是否有环</h3>
+<p>赛跑问题，设置快、慢指针，如果有环那么快指针会跑到慢指针后面，如果没环快指针会先到达空指针。
+假设快指针的速度为$v_1$，慢指针的速度为$v_2$。环的长度为$s$，由于两者并不是同时在环的起点开始跑的，所以两者都进入环时会有一个位移差$d$，则$$(v_1 - v_2)t = s-d$$由于$t$一定要是整数，所以设置两者速度差为1，即快指针一次移动2个，慢指针一次移动1格</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">hasCycle</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || ! ( head-&gt;next ) ) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+
+    ListNode* fast = head; ListNode* slow = head;
+
+    <span class="hljs-keyword">while</span> ( fast &amp;&amp; fast-&gt;next ) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+
+        <span class="hljs-keyword">if</span> ( slow == next ) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</div></code></pre>
+<h3 id="7%E5%AF%BB%E6%89%BE%E9%93%BE%E8%A1%A8%E4%B8%AD%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF%E5%B9%B6%E6%89%BE%E5%87%BA%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88%E7%9A%84%E4%BA%A4%E7%82%B9">7、寻找链表中是否有环并找出快慢指针的交点</h3>
+<p><img src="https://pic.leetcode-cn.com/99987d4e679fdfbcfd206a4429d9b076b46ad09bd2670f886703fb35ef130635-image.png" alt="pic1"></p>
+<p>$F+a$为慢指针所走过的距离，$F+a+b+a$为快指针走过的距离，显然有$$2(F+a) = F+a+b+a$$，由此可以推出$F=b$。</p>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">detectCycle</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || ! ( head-&gt;next ) ) retur <span class="hljs-literal">NULL</span>;
+    ListNode* fast = head;
+    ListNode* slow = head;
+
+    <span class="hljs-keyword">while</span> ( fast &amp;&amp; fast-&gt;next ) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+
+        <span class="hljs-keyword">if</span> ( slow == fast ) <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-keyword">if</span> ( ! fast || ! fast-&gt;next ) <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+
+    slow = head;
+
+    <span class="hljs-keyword">while</span> ( slow != fast ) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next;
+    }
+    <span class="hljs-keyword">return</span> slow;
+}
+</div></code></pre>
+<h3 id="8%E9%93%BE%E8%A1%A8%E7%9A%84%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F">8、链表的归并排序</h3>
+<p>归并排序属于分而治之的算法，分的过程采用寻找中点算法，合的过程采用有序链表的合并算法</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// 寻找链表中点算法</span>
+<span class="hljs-function">ListNode* <span class="hljs-title">midst</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    ListNode* slow = head; ListNode* fast = head;
+
+    <span class="hljs-keyword">while</span> ( fast &amp;&amp; fast-&gt;next ) {
+        slow = slow-&gt;next;
+        fast = fast-&gt;next-&gt;next;
+    }
+
+    <span class="hljs-keyword">return</span> slow;
+}
+
+<span class="hljs-comment">// 合并两个有序链表</span>
+<span class="hljs-function">ListNode* <span class="hljs-title">merge</span> <span class="hljs-params">( ListNode* p, ListNode* q )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! p ) <span class="hljs-keyword">return</span> q;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( ! q ) <span class="hljs-keyword">return</span> p;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ( p-&gt;val &lt;= q-&gt;val ) {
+        p-&gt;next = merge ( p-&gt;next, q );
+        <span class="hljs-keyword">return</span> p;
+    } <span class="hljs-keyword">else</span> {
+        q-&gt;next = merge ( p, q-&gt;next );
+        <span class="hljs-keyword">return</span> q;
+    }
+}
+
+<span class="hljs-comment">// 归并排序算法</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mergeSort</span> <span class="hljs-params">( ListNode*&amp; head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( !head || ! head-&gt;next ) <span class="hljs-keyword">return</span>;
+
+    ListNode* mi = midst ( head );
+    ListNode* p = head; ListNode* q = mi-&gt;next;
+
+    mi-&gt;next = <span class="hljs-literal">NULL</span>;
+
+    mergeSort ( p ); mergeSort ( q );
+
+    head = merge ( p, q );
+}
+</div></code></pre>
+<h3 id="9%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F">9、链表的插入排序</h3>
+<p>插入排序将整个序列分为两个部分，前端为有序，后端为无序，不断的将无序中的第一个元素加入有序
+<img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" alt="pic2"></p>
+<pre class="hljs"><code><div><span class="hljs-function">ListNode* <span class="hljs-title">search</span> <span class="hljs-params">( ListNode* head, <span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> e )</span> </span>{
+    ListNode* p = head; ListNode* q;
+
+    <span class="hljs-keyword">while</span> ( <span class="hljs-number">0</span> &lt;= n-- ) {
+        q = p;
+        <span class="hljs-keyword">if</span> ( e &lt;= ( p = p-&gt;next )-&gt;val ) <span class="hljs-keyword">break</span>;
+    }
+
+    <span class="hljs-keyword">return</span> q;
+}
+
+<span class="hljs-function">ListNode* <span class="hljs-title">insertionSortList</span> <span class="hljs-params">( ListNode* head )</span> </span>{
+    <span class="hljs-keyword">if</span> ( ! head || head-&gt;next == <span class="hljs-literal">NULL</span> ) <span class="hljs-keyword">return</span> head;
+    ListNode* dummyHead = <span class="hljs-keyword">new</span> ListNode ( <span class="hljs-number">0</span> );
+    dummyHead-&gt;next = head;
+    
+    ListNode* p = dummyHead; ListNode* q;
+    <span class="hljs-keyword">int</span> r = <span class="hljs-number">0</span>;
+
+    <span class="hljs-keyword">while</span> ( ( q = p-&gt;next ) != <span class="hljs-literal">NULL</span> ) {
+        ListNode* pre = search ( dummyHead, r, q-&gt;val );
+        <span class="hljs-keyword">if</span> ( pre-&gt;next == q ) p = q;
+        <span class="hljs-keyword">else</span> {
+            p-&gt;next = q-&gt;next;
+            q-&gt;next = pre-&gt;next;
+            pre-&gt;next = q;
+        }
+        r++;
+    }
+
+    <span class="hljs-keyword">return</span> dummyHead-&gt;next;
+}
+</div></code></pre>
+
+</body>
+</html>
