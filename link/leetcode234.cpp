@@ -6,8 +6,19 @@ struct ListNode {
 };
 
 class Solution {
+    private:
+        ListNode* front;
     public:
-        bool isPalindrome ( ListNode* head ) {
-            
+        bool recursion ( ListNode* cur ) {
+            if ( cur ) {
+                if ( ! recursion ( cur->next ) ) return false;
+                if ( front->val != cur->val ) return false;
+                front = front->next;
+            }
+            return true;
+        }
+        bool isPalindrome(ListNode* head) {
+            front = head;
+            return recursion ( head );
         }
 };
